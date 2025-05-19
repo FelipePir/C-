@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int codigo;
+    double precoEtiqueta, precoFinal;
+
+    cout << "Digite o preco do produto: ";
+    cin >> precoEtiqueta;
+
+    cout << "Digite o codigo da condicao de pagamento (1 a 4): ";
+    cin >> codigo;
+
+    switch (codigo) {
+        case 1:
+            precoFinal = precoEtiqueta * 0.9;  
+            break;
+        case 2:
+            precoFinal = precoEtiqueta * 0.95; 
+            break;
+        case 3:
+            precoFinal = precoEtiqueta;        
+            break;
+        case 4:
+            precoFinal = precoEtiqueta * 1.10; 
+            break;
+        default:
+            cout << "Codigo invalido!" << endl;
+            return 1;
+    }
+
+    cout << "O valor a ser pago �: R$ " << precoFinal << endl;
+
+    return 0;
+}
