@@ -1,0 +1,77 @@
+#include <iostream>
+#include <string>
+#include <iomanip> // Para formatar com 2 casas decimais
+using namespace std;
+
+int main() {
+    string nomeFazendeiro;
+    int tipo;
+    double area, precoPorAcre = 0.0, custoInicial, descontoArea = 0.0, descontoValor = 0.0, custoFinal;
+
+    // Entrada de dados
+    
+    cout << "Digite o nome do fazendeiro: ";
+    getline(cin, nomeFazendeiro);
+
+    cout << "Digite o tipo de pulverizacao (1 a 4): ";
+    cin >> tipo;
+
+    cout << "Digite a area a ser pulverizada (em acres): ";
+    cin >> area;
+
+    // Definindo preço por acre conforme o tipo
+    
+    switch (tipo) {
+        
+        case 1:
+            precoPorAcre = 5.0;
+            break;
+            
+        case 2:
+            precoPorAcre = 10.0;
+            break;
+            
+        case 3:
+            precoPorAcre = 15.0;
+            break;
+            
+        case 4:
+            precoPorAcre = 25.0;
+            break;
+            
+        default:
+            cout << "Tipo de pulverizacao invalido." << endl;
+            return 1;
+    }
+
+    // Cálculo do custo inicial
+    
+    custoInicial = area * precoPorAcre;
+
+    // Aplicando desconto de 5% se a área for maior que 300 acres
+   
+    if (area > 300) {
+        descontoArea = custoInicial * 0.05;
+        custoInicial -= descontoArea;
+    }
+
+    // Aplicando desconto adicional se o custo (sem desconto da área) passar de 1750
+    
+    double valorSemDescontoTotal = area * precoPorAcre;
+    if (valorSemDescontoTotal > 1750.0) {
+        descontoValor = (valorSemDescontoTotal - 1750.0) * 0.10;
+    }
+
+    // Cálculo do custo final
+   
+    custoFinal = custoInicial - descontoValor;
+
+    // Saída formatada
+    
+    cout << fixed << setprecision(2);
+    cout << "\n--- RELATORIO DE PULVERIZACAO ---\n";
+    cout << "Fazendeiro: " << nomeFazendeiro << endl;
+    cout << "Valor a ser pago: R$ " << custoFinal << endl;
+
+    return 0;
+}
