@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cctype>  // para toupper
+using namespace std;
+
+int main() {
+    
+    double precoFabrica, precoFinal;
+    char arCondicionado, pinturaMetalica, vidroEletrico, direcaoHidraulica;
+
+    cout << "Digite o preco inicial de fabrica do carro: R$ ";
+    cin >> precoFabrica;
+
+    cout << "O carro tem ar condicionado? (S/N): ";
+    cin >> arCondicionado;
+    
+    arCondicionado = toupper(arCondicionado);
+
+    cout << "O carro tem pintura metalica? (S/N): ";
+    cin >> pinturaMetalica;
+    
+    pinturaMetalica = toupper(pinturaMetalica);
+
+    cout << "O carro tem vidro eletrico? (S/N): ";
+    cin >> vidroEletrico;
+    
+    vidroEletrico = toupper(vidroEletrico);
+
+    cout << "O carro tem direcao hidraulica? (S/N): ";
+    cin >> direcaoHidraulica;
+    
+    direcaoHidraulica = toupper(direcaoHidraulica);
+
+    precoFinal = precoFabrica;
+
+    if (arCondicionado == 'S') {
+        precoFinal += 1750.00;
+    }
+    
+    if (pinturaMetalica == 'S') {
+        precoFinal += 800.00;
+    }
+    
+    if (vidroEletrico == 'S') {
+        precoFinal += 1200.00;
+    }
+    
+    if (direcaoHidraulica == 'S') {
+        precoFinal += 2000.00;
+    }
+
+    cout << "\nPreco final do carro: R$ " << precoFinal << endl;
+
+    return 0;
+}
+
