@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    
+    // Constantes
+    const double SALARIO_MINIMO = 350.00;
+    const double VALOR_HORA_EXTRA = 10.00;
+
+    
+    // Variáveis
+    
+    string nome;
+    int horasExtras;
+    double salarioHoraExtra, salarioBruto, descontoINSS = 0, descontoIR = 0, salarioLiquido;
+
+    // Entrada de dados
+    
+    cout << "Digite o nome do funcionario: ";
+    getline(cin, nome);
+
+    cout << "Digite a quantidade de horas-extras trabalhadas: ";
+    cin >> horasExtras;
+
+    // Cálculos
+    
+    salarioHoraExtra = horasExtras * VALOR_HORA_EXTRA;
+    salarioBruto = 3 * SALARIO_MINIMO + salarioHoraExtra;
+
+    if (salarioBruto > 1500.00) {
+        descontoINSS = salarioBruto * 0.12;
+    }
+
+    if (salarioBruto > 2000.00) {
+        descontoIR = salarioBruto * 0.20;
+    }
+
+    salarioLiquido = salarioBruto - descontoINSS - descontoIR;
+
+    // Saída
+    
+    cout << fixed << setprecision(2);
+    cout << "\n--- FOLHA DE PAGAMENTO ---\n";
+    cout << "Nome: " << nome << endl;
+    cout << "Horas extras: " << horasExtras << endl;
+    cout << "Salario bruto: R$ " << salarioBruto << endl;
+    cout << "Desconto INSS: R$ " << descontoINSS << endl;
+    cout << "Desconto IR: R$ " << descontoIR << endl;
+    cout << "Salario liquido: R$ " << salarioLiquido << endl;
+
+    return 0;
+}
