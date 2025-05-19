@@ -1,0 +1,76 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int idade;
+    float peso;
+    float dosagemMg = 0;
+    float gotasPorMl = 20.0;
+    float mgPorMl = 500.0;
+
+    // Entrada de dados
+    
+    cout << "Digite a idade do paciente (em anos): ";
+    cin >> idade;
+
+    cout << "Digite o peso do paciente (em kg): ";
+    cin >> peso;
+
+    // Cálculo da dosagem em mg
+    
+    if (idade >= 12) {
+        
+        if (peso >= 60) {
+            dosagemMg = 1000;
+        } 
+        
+        else {
+            dosagemMg = 875;
+        }
+        
+    } 
+    
+    else {
+        
+        if (peso >= 5 && peso <= 9) {
+            dosagemMg = 125;
+        } 
+        
+        else if (peso > 9 && peso <= 16) {
+            dosagemMg = 250;
+        } 
+        
+        else if (peso > 16 && peso <= 24) {
+            dosagemMg = 375;
+        } 
+        
+        else if (peso > 24 && peso <= 30) {
+            dosagemMg = 500;
+        } 
+        
+        else if (peso > 30) {
+            dosagemMg = 750;
+        } 
+        
+        else {
+            cout << "Peso abaixo do mínimo para dosagem." << endl;
+            return 1;
+        }
+    }
+
+    // Conversão de mg para gotas
+    
+    float ml = dosagemMg / mgPorMl;
+    
+    int gotas = ml * gotasPorMl;
+
+    // Saída
+    
+    cout << fixed << setprecision(2);
+    cout << "\n--- RECEITA MEDICAMENTOSA ---\n";
+    cout << "Dosagem: " << dosagemMg << " mg\n";
+    cout << "Quantidade de gotas por dose: " << gotas << " gotas\n";
+
+    return 0;
+}
